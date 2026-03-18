@@ -1,0 +1,722 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+.container {
+    scroll-snap-type: y mandatory;
+    overflow-y: scroll;
+    height: 100vh;
+}
+
+.page {
+    height: 100vh;
+    width: 100vw;
+    scroll-snap-align: start;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* 首页样式 */
+.intro-page {
+    background: #fef5e7;
+    position: relative;
+    overflow: hidden;
+}
+
+.intro-page::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    background-image:
+        /* 第一层：红橙黄绿青蓝紫 - 菱形图案 */
+        linear-gradient(45deg, #ff6b6b 0%, #ff6b6b 14.28%, transparent 14.28%, transparent 28.56%),
+        linear-gradient(45deg, transparent 14.28%, #feca57 14.28%, #feca57 28.56%, transparent 28.56%),
+        linear-gradient(45deg, transparent 28.56%, #f1c40f 28.56%, #f1c40f 42.84%, transparent 42.84%),
+        linear-gradient(45deg, transparent 42.84%, #2ecc71 42.84%, #2ecc71 57.12%, transparent 57.12%),
+        linear-gradient(45deg, transparent 57.12%, #1abc9c 57.12%, #1abc9c 71.4%, transparent 71.4%),
+        linear-gradient(45deg, transparent 71.4%, #54a0ff 71.4%, #54a0ff 85.68%, transparent 85.68%),
+        linear-gradient(45deg, transparent 85.68%, #a29bfe 85.68%, #a29bfe 100%),
+        /* 第二层：反向菱形 */
+        linear-gradient(-45deg, #ff6b6b 0%, #ff6b6b 14.28%, transparent 14.28%, transparent 28.56%),
+        linear-gradient(-45deg, transparent 14.28%, #feca57 14.28%, #feca57 28.56%, transparent 28.56%),
+        linear-gradient(-45deg, transparent 28.56%, #f1c40f 28.56%, #f1c40f 42.84%, transparent 42.84%),
+        linear-gradient(-45deg, transparent 42.84%, #2ecc71 42.84%, #2ecc71 57.12%, transparent 57.12%),
+        linear-gradient(-45deg, transparent 57.12%, #1abc9c 57.12%, #1abc9c 71.4%, transparent 71.4%),
+        linear-gradient(-45deg, transparent 71.4%, #54a0ff 71.4%, #54a0ff 85.68%, transparent 85.68%),
+        linear-gradient(-45deg, transparent 85.68%, #a29bfe 85.68%, #a29bfe 100%);
+    background-size: 100% 100%;
+    opacity: 0.85;
+}
+
+.intro-page::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background:
+        /* 45度斜线 - 多条不对称分布 */
+        linear-gradient(45deg, transparent 0%, transparent 12%, rgba(255, 255, 255, 0.4) 12%, rgba(255, 255, 255, 0.4) 13%, transparent 13%),
+        linear-gradient(45deg, transparent 0%, transparent 28%, rgba(255, 255, 255, 0.35) 28%, rgba(255, 255, 255, 0.35) 29.5%, transparent 29.5%),
+        linear-gradient(45deg, transparent 0%, transparent 47%, rgba(255, 255, 255, 0.3) 47%, rgba(255, 255, 255, 0.3) 49%, transparent 49%),
+        linear-gradient(45deg, transparent 0%, transparent 65%, rgba(255, 255, 255, 0.38) 65%, rgba(255, 255, 255, 0.38) 66.5%, transparent 66.5%),
+        linear-gradient(45deg, transparent 0%, transparent 83%, rgba(255, 255, 255, 0.32) 83%, rgba(255, 255, 255, 0.32) 84%, transparent 84%),
+        /* -45度斜线 - 多条不对称分布 */
+        linear-gradient(-45deg, transparent 0%, transparent 8%, rgba(255, 255, 255, 0.36) 8%, rgba(255, 255, 255, 0.36) 9.5%, transparent 9.5%),
+        linear-gradient(-45deg, transparent 0%, transparent 22%, rgba(255, 255, 255, 0.33) 22%, rgba(255, 255, 255, 0.33) 23%, transparent 23%),
+        linear-gradient(-45deg, transparent 0%, transparent 41%, rgba(255, 255, 255, 0.4) 41%, rgba(255, 255, 255, 0.4) 42.5%, transparent 42.5%),
+        linear-gradient(-45deg, transparent 0%, transparent 58%, rgba(255, 255, 255, 0.35) 58%, rgba(255, 255, 255, 0.35) 59%, transparent 59%),
+        linear-gradient(-45deg, transparent 0%, transparent 74%, rgba(255, 255, 255, 0.3) 74%, rgba(255, 255, 255, 0.3) 75.5%, transparent 75.5%),
+        linear-gradient(-45deg, transparent 0%, transparent 91%, rgba(255, 255, 255, 0.37) 91%, rgba(255, 255, 255, 0.37) 92%, transparent 92%);
+}
+
+.intro-page .content {
+    text-align: center;
+    color: white;
+    position: relative;
+    z-index: 10;
+}
+
+.rainbow-text {
+    font-size: 5rem;
+    font-weight: 900;
+    color: white;
+    text-shadow: 
+        3px 3px 0 rgba(0, 0, 0, 0.2),
+        6px 6px 0 rgba(0, 0, 0, 0.15),
+        9px 9px 0 rgba(0, 0, 0, 0.1),
+        12px 12px 20px rgba(0, 0, 0, 0.3);
+    margin: 20px 0;
+    letter-spacing: 8px;
+}
+
+.intro-page h2 {
+    font-size: 3rem;
+    letter-spacing: 15px;
+    color: white;
+    text-shadow: 
+        2px 2px 0 rgba(0, 0, 0, 0.2),
+        4px 4px 0 rgba(0, 0, 0, 0.15),
+        6px 6px 0 rgba(0, 0, 0, 0.1),
+        8px 8px 15px rgba(0, 0, 0, 0.3);
+}
+
+.scroll-hint {
+    font-size: 3rem;
+    margin-top: 50px;
+    animation: bounce 2s infinite;
+    color: white;
+    text-shadow: 
+        2px 2px 0 rgba(0, 0, 0, 0.2),
+        4px 4px 0 rgba(0, 0, 0, 0.15),
+        6px 6px 10px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-20px); }
+    60% { transform: translateY(-10px); }
+}
+
+/* 颜色介绍页 */
+.color-intro {
+    position: relative;
+}
+
+.color-title {
+    font-size: 15rem;
+    font-weight: 900;
+    color: white;
+    text-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    letter-spacing: 20px;
+    animation: fadeInScale 1s ease;
+    position: relative;
+    z-index: 10;
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* 红色 */
+.red-intro {
+    background: #ffcccc;
+    position: relative;
+    overflow: hidden;
+}
+
+.red-intro::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    background-image:
+        linear-gradient(45deg, #e74c3c 0%, #e74c3c 25%, transparent 25%, transparent 75%, #e74c3c 75%, #e74c3c),
+        linear-gradient(-45deg, #ff6b6b 0%, #ff6b6b 25%, transparent 25%, transparent 75%, #ff6b6b 75%, #ff6b6b),
+        linear-gradient(45deg, transparent 0%, transparent 40%, #ff7979 40%, #ff7979 60%, transparent 60%, transparent),
+        linear-gradient(-45deg, transparent 0%, transparent 40%, #eb4d4b 40%, #eb4d4b 60%, transparent 60%, transparent);
+    background-size: 40vw 40vw, 40vw 40vw, 60vw 60vw, 60vw 60vw;
+    background-position: 0 0, 20vw 20vw, 10vw 10vw, 30vw 30vw;
+    opacity: 0.85;
+}
+
+.red-intro::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background: 
+        linear-gradient(120deg, transparent 30%, rgba(255, 107, 107, 0.3) 30%, rgba(255, 107, 107, 0.3) 35%, transparent 35%),
+        linear-gradient(60deg, transparent 60%, rgba(235, 77, 75, 0.4) 60%, rgba(235, 77, 75, 0.4) 65%, transparent 65%);
+}
+
+.red-bg {
+    background: linear-gradient(to bottom, 
+        rgba(192, 57, 43, 0.3) 0%,
+        rgba(231, 76, 60, 0.5) 50%,
+        rgba(255, 107, 107, 0.3) 100%);
+}
+
+/* 橙色 */
+.orange-intro {
+    background: #ffe5cc;
+    position: relative;
+    overflow: hidden;
+}
+
+.orange-intro::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    background:
+        linear-gradient(30deg, #e67e22 0%, #e67e22 33.33%, transparent 33.33%),
+        linear-gradient(150deg, #f39c12 0%, #f39c12 33.33%, transparent 33.33%),
+        linear-gradient(90deg, #ff9f43 0%, #ff9f43 50%, transparent 50%),
+        linear-gradient(270deg, #ffa502 0%, #ffa502 50%, transparent 50%);
+    opacity: 0.85;
+}
+
+.orange-intro::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background:
+        linear-gradient(30deg, transparent 40%, rgba(243, 156, 18, 0.3) 40%, rgba(243, 156, 18, 0.3) 42%, transparent 42%),
+        linear-gradient(150deg, transparent 55%, rgba(255, 159, 67, 0.3) 55%, rgba(255, 159, 67, 0.3) 58%, transparent 58%);
+}
+
+.orange-bg {
+    background: linear-gradient(to bottom,
+        rgba(211, 84, 0, 0.3) 0%,
+        rgba(230, 126, 34, 0.5) 50%,
+        rgba(243, 156, 18, 0.3) 100%);
+}
+
+/* 黄色 */
+.yellow-intro {
+    background: #fff9e6;
+    position: relative;
+    overflow: hidden;
+}
+
+.yellow-intro::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    background:
+        conic-gradient(from 45deg at 30% 30%, #f1c40f 0deg, #f1c40f 90deg, #feca57 90deg, #feca57 180deg, #ffd32a 180deg, #ffd32a 270deg, #fffa65 270deg, #fffa65 360deg),
+        conic-gradient(from -45deg at 70% 70%, #feca57 0deg, #feca57 120deg, #ffd32a 120deg, #ffd32a 240deg, #f1c40f 240deg, #f1c40f 360deg);
+    background-size: 50% 50%, 50% 50%;
+    background-position: 0 0, 50% 50%;
+    opacity: 0.85;
+}
+
+.yellow-intro::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background:
+        linear-gradient(135deg, transparent 48%, rgba(254, 202, 87, 0.3) 48%, rgba(254, 202, 87, 0.3) 52%, transparent 52%),
+        linear-gradient(45deg, transparent 48%, rgba(255, 250, 101, 0.3) 48%, rgba(255, 250, 101, 0.3) 52%, transparent 52%);
+}
+
+.yellow-bg {
+    background: linear-gradient(to bottom,
+        rgba(243, 156, 18, 0.3) 0%,
+        rgba(241, 196, 15, 0.5) 50%,
+        rgba(254, 202, 87, 0.3) 100%);
+}
+
+/* 绿色 */
+.green-intro {
+    background: #d5f4e6;
+    position: relative;
+    overflow: hidden;
+}
+
+.green-intro::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    background:
+        linear-gradient(60deg, #2ecc71 30%, transparent 30%),
+        linear-gradient(120deg, transparent 70%, #1dd1a1 70%),
+        linear-gradient(180deg, #55efc4 50%, #7bed9f 50%);
+    background-size: 100% 100%;
+    opacity: 0.85;
+}
+
+.green-intro::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background:
+        repeating-linear-gradient(45deg, transparent, transparent 10vw, rgba(46, 204, 113, 0.2) 10vw, rgba(46, 204, 113, 0.2) 11vw),
+        repeating-linear-gradient(-45deg, transparent, transparent 8vw, rgba(29, 209, 161, 0.2) 8vw, rgba(29, 209, 161, 0.2) 9vw);
+}
+
+.green-bg {
+    background: linear-gradient(to bottom,
+        rgba(39, 174, 96, 0.3) 0%,
+        rgba(46, 204, 113, 0.5) 50%,
+        rgba(29, 209, 161, 0.3) 100%);
+}
+
+/* 青色 */
+.cyan-intro {
+    background: #d4f1f4;
+    position: relative;
+    overflow: hidden;
+}
+
+.cyan-intro::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    background:
+        radial-gradient(circle at 20% 30%, #1abc9c 0%, #1abc9c 15%, transparent 15%),
+        radial-gradient(circle at 60% 20%, #00d2d3 0%, #00d2d3 20%, transparent 20%),
+        radial-gradient(circle at 80% 60%, #48dbfb 0%, #48dbfb 25%, transparent 25%),
+        radial-gradient(circle at 30% 80%, #0abde3 0%, #0abde3 18%, transparent 18%),
+        radial-gradient(circle at 70% 90%, #5f27cd 0%, #5f27cd 22%, transparent 22%),
+        linear-gradient(135deg, #1abc9c 0%, #00d2d3 40%, #48dbfb 70%, #0abde3 100%);
+    opacity: 0.85;
+}
+
+.cyan-intro::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background:
+        linear-gradient(90deg, transparent 30%, rgba(72, 219, 251, 0.2) 30%, rgba(72, 219, 251, 0.2) 31%, transparent 31%),
+        linear-gradient(0deg, transparent 60%, rgba(0, 210, 211, 0.2) 60%, rgba(0, 210, 211, 0.2) 62%, transparent 62%);
+}
+
+.cyan-bg {
+    background: linear-gradient(to bottom,
+        rgba(22, 160, 133, 0.3) 0%,
+        rgba(26, 188, 156, 0.5) 50%,
+        rgba(0, 210, 211, 0.3) 100%);
+}
+
+/* 蓝色 */
+.blue-intro {
+    background: #dfe6e9;
+    position: relative;
+    overflow: hidden;
+}
+
+.blue-intro::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    background:
+        linear-gradient(180deg, #3498db 0%, #3498db 33.33%, transparent 33.33%),
+        linear-gradient(180deg, transparent 33.33%, #54a0ff 33.33%, #54a0ff 66.66%, transparent 66.66%),
+        linear-gradient(180deg, transparent 66.66%, #74b9ff 66.66%, #74b9ff 100%);
+    opacity: 0.85;
+}
+
+.blue-intro::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background:
+        linear-gradient(165deg, transparent 35%, rgba(84, 160, 255, 0.2) 35%, rgba(84, 160, 255, 0.2) 37%, transparent 37%),
+        linear-gradient(15deg, transparent 65%, rgba(116, 185, 255, 0.2) 65%, rgba(116, 185, 255, 0.2) 68%, transparent 68%);
+}
+
+.blue-bg {
+    background: linear-gradient(to bottom,
+        rgba(41, 128, 185, 0.3) 0%,
+        rgba(52, 152, 219, 0.5) 50%,
+        rgba(84, 160, 255, 0.3) 100%);
+}
+
+/* 紫色 */
+.purple-intro {
+    background: #f3e5f5;
+    position: relative;
+    overflow: hidden;
+}
+
+.purple-intro::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    background-image:
+        linear-gradient(30deg, #9b59b6 12%, transparent 12.5%, transparent 87%, #9b59b6 87.5%, #9b59b6),
+        linear-gradient(150deg, #9b59b6 12%, transparent 12.5%, transparent 87%, #9b59b6 87.5%, #9b59b6),
+        linear-gradient(30deg, #a29bfe 12%, transparent 12.5%, transparent 87%, #a29bfe 87.5%, #a29bfe),
+        linear-gradient(150deg, #a29bfe 12%, transparent 12.5%, transparent 87%, #a29bfe 87.5%, #a29bfe),
+        linear-gradient(60deg, #b19cd9 25%, transparent 25.5%, transparent 75%, #b19cd9 75%, #b19cd9),
+        linear-gradient(60deg, #d2b4de 25%, transparent 25.5%, transparent 75%, #d2b4de 75%, #d2b4de);
+    background-size: 20vw 35vw, 20vw 35vw, 20vw 35vw, 20vw 35vw, 20vw 35vw, 20vw 35vw;
+    background-position: 0 0, 0 0, 10vw 17.5vw, 10vw 17.5vw, 0 0, 10vw 17.5vw;
+    background-color: #a29bfe;
+    opacity: 0.85;
+}
+
+.purple-intro::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background:
+        linear-gradient(75deg, transparent 40%, rgba(162, 155, 254, 0.2) 40%, rgba(162, 155, 254, 0.2) 43%, transparent 43%),
+        linear-gradient(105deg, transparent 55%, rgba(155, 89, 182, 0.2) 55%, rgba(155, 89, 182, 0.2) 58%, transparent 58%);
+}
+
+.purple-intro::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image:
+        linear-gradient(30deg, #8e44ad 12%, transparent 12.5%, transparent 87%, #8e44ad 87.5%, #8e44ad),
+        linear-gradient(150deg, #8e44ad 12%, transparent 12.5%, transparent 87%, #8e44ad 87.5%, #8e44ad),
+        linear-gradient(30deg, #9b59b6 12%, transparent 12.5%, transparent 87%, #9b59b6 87.5%, #9b59b6),
+        linear-gradient(150deg, #9b59b6 12%, transparent 12.5%, transparent 87%, #9b59b6 87.5%, #9b59b6),
+        linear-gradient(60deg, #a29bfe 25%, transparent 25.5%, transparent 75%, #a29bfe 75%, #a29bfe),
+        linear-gradient(60deg, #b19cd9 25%, transparent 25.5%, transparent 75%, #b19cd9 75%, #b19cd9);
+    background-size: 20vw 35vw, 20vw 35vw, 20vw 35vw, 20vw 35vw, 20vw 35vw, 20vw 35vw;
+    background-position: 0 0, 0 0, 10vw 17.5vw, 10vw 17.5vw, 0 0, 10vw 17.5vw;
+    background-color: #9b59b6;
+    opacity: 0.9;
+}
+
+.purple-intro::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:
+        linear-gradient(75deg, transparent 40%, rgba(162, 155, 254, 0.3) 40%, rgba(162, 155, 254, 0.3) 43%, transparent 43%),
+        linear-gradient(105deg, transparent 55%, rgba(142, 68, 173, 0.4) 55%, rgba(142, 68, 173, 0.4) 58%, transparent 58%);
+}
+
+.purple-bg {
+    background: linear-gradient(to bottom,
+        rgba(142, 68, 173, 0.3) 0%,
+        rgba(155, 89, 182, 0.5) 50%,
+        rgba(162, 155, 254, 0.3) 100%);
+}
+
+/* 照片页样式 */
+.photo-page {
+    flex-direction: column;
+    padding: 40px;
+}
+
+.photo-page img {
+    max-width: 70%;
+    max-height: 65vh;
+    object-fit: contain;
+    border-radius: 20px;
+    box-shadow: 
+        0 20px 60px rgba(0, 0, 0, 0.3),
+        0 0 0 1px rgba(255, 255, 255, 0.1);
+    animation: photoFadeIn 0.8s ease;
+}
+
+@keyframes photoFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.caption {
+    margin-top: 40px;
+    text-align: center;
+    color: white;
+    animation: captionFadeIn 1s ease 0.3s both;
+}
+
+@keyframes captionFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.caption .date {
+    font-size: 1.5rem;
+    font-weight: 300;
+    letter-spacing: 3px;
+    margin-bottom: 15px;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.caption .text {
+    font-size: 2.5rem;
+    font-weight: 600;
+    letter-spacing: 5px;
+    text-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+/* 结尾页 */
+.ending-page {
+    background: #fef5e7;
+    position: relative;
+    overflow: hidden;
+}
+
+.ending-page::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    background-image:
+        /* 水平条纹 - 彩虹色依次排列 */
+        linear-gradient(0deg, 
+            #ff6b6b 0%, #ff6b6b 14.28%, 
+            #feca57 14.28%, #feca57 28.56%, 
+            #f1c40f 28.56%, #f1c40f 42.84%, 
+            #2ecc71 42.84%, #2ecc71 57.12%, 
+            #1abc9c 57.12%, #1abc9c 71.4%, 
+            #54a0ff 71.4%, #54a0ff 85.68%, 
+            #a29bfe 85.68%, #a29bfe 100%),
+        /* 斜向条纹叠加 */
+        repeating-linear-gradient(30deg, 
+            transparent, 
+            transparent 8vw, 
+            rgba(255, 255, 255, 0.15) 8vw, 
+            rgba(255, 255, 255, 0.15) 10vw),
+        repeating-linear-gradient(-30deg, 
+            transparent, 
+            transparent 8vw, 
+            rgba(255, 255, 255, 0.1) 8vw, 
+            rgba(255, 255, 255, 0.1) 10vw);
+    opacity: 0.85;
+}
+
+.ending-page::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background:
+        /* 垂直细线装饰 */
+        repeating-linear-gradient(90deg, 
+            transparent, 
+            transparent 14.28vw, 
+            rgba(255, 255, 255, 0.3) 14.28vw, 
+            rgba(255, 255, 255, 0.3) 14.38vw);
+}
+
+.ending-page .content {
+    text-align: center;
+    color: white;
+    position: relative;
+    z-index: 10;
+}
+
+.date-range {
+    font-size: 2rem;
+    font-weight: 300;
+    letter-spacing: 5px;
+    margin-bottom: 40px;
+    color: white;
+    text-shadow: 
+        2px 2px 0 rgba(0, 0, 0, 0.2),
+        4px 4px 0 rgba(0, 0, 0, 0.15),
+        6px 6px 10px rgba(0, 0, 0, 0.3);
+}
+
+.blessing {
+    font-size: 3.5rem;
+    font-weight: 700;
+    letter-spacing: 10px;
+    margin: 20px 0;
+    color: white;
+    text-shadow: 
+        3px 3px 0 rgba(0, 0, 0, 0.2),
+        6px 6px 0 rgba(0, 0, 0, 0.15),
+        9px 9px 15px rgba(0, 0, 0, 0.3);
+}
+
+.age {
+    font-size: 6rem;
+    font-weight: 900;
+    letter-spacing: 15px;
+    margin: 30px 0;
+    color: white;
+    text-shadow: 
+        4px 4px 0 rgba(0, 0, 0, 0.2),
+        8px 8px 0 rgba(0, 0, 0, 0.15),
+        12px 12px 0 rgba(0, 0, 0, 0.1),
+        16px 16px 25px rgba(0, 0, 0, 0.3);
+}
+
+.heart {
+    font-size: 5rem;
+    margin-top: 40px;
+    animation: heartbeat 1.5s ease infinite;
+    color: white;
+    text-shadow: 
+        3px 3px 0 rgba(0, 0, 0, 0.2),
+        6px 6px 0 rgba(0, 0, 0, 0.15),
+        9px 9px 15px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    10%, 30% { transform: scale(1.1); }
+    20%, 40% { transform: scale(1); }
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .rainbow-text {
+        font-size: 3rem;
+        letter-spacing: 4px;
+    }
+    
+    .intro-page h2 {
+        font-size: 2rem;
+        letter-spacing: 8px;
+    }
+    
+    .color-title {
+        font-size: 8rem;
+    }
+    
+    .photo-page img {
+        max-width: 90%;
+        max-height: 60vh;
+    }
+    
+    .caption .date {
+        font-size: 1.2rem;
+    }
+    
+    .caption .text {
+        font-size: 1.8rem;
+        letter-spacing: 3px;
+    }
+    
+    .age {
+        font-size: 4rem;
+    }
+    
+    .blessing {
+        font-size: 2.5rem;
+        letter-spacing: 5px;
+    }
+}
