@@ -58,10 +58,40 @@ function generatePages() {
     container.innerHTML = html;
 }
 
+// 音乐播放控制
+function initMusicPlayer() {
+    const music = document.getElementById('bgMusic');
+    const musicBtn = document.getElementById('musicBtn');
+    
+    // 页面加载后自动播放
+    music.play().catch(err => {
+        // 如果自动播放被浏览器阻止，显示暂停状态
+        console.log('自动播放被阻止，需要用户交互');
+        musicBtn.classList.remove('playing');
+        musicBtn.classList.add('paused');
+    });
+    
+    // 点击按钮切换播放/暂停
+    musicBtn.addEventListener('click', function() {
+        if (music.paused) {
+            music.play();
+            musicBtn.classList.add('playing');
+            musicBtn.classList.remove('paused');
+        } else {
+            music.pause();
+            musicBtn.classList.remove('playing');
+            musicBtn.classList.add('paused');
+        }
+    });
+}
+
 // 平滑滚动和自动吸附功能
 document.addEventListener('DOMContentLoaded', function() {
     // 先生成页面内容
     generatePages();
+    
+    // 初始化音乐播放器
+    initMusicPlayer();
 
     const container = document.querySelector('.container');
     const pages = document.querySelectorAll('.page');

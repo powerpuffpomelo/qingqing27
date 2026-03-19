@@ -682,6 +682,68 @@ body {
 }
 
 /* 响应式设计 */
+/* 音乐播放按钮 */
+.music-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    cursor: pointer;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.music-btn:hover {
+    background: rgba(255, 255, 255, 0.25);
+    border-color: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+.music-btn:active {
+    transform: translateY(0);
+}
+
+.music-icon {
+    width: 22px;
+    height: 22px;
+    color: rgba(255, 255, 255, 0.85);
+    transition: all 0.3s ease;
+}
+
+.music-btn.playing .music-icon {
+    animation: musicNote 1.5s ease-in-out infinite;
+}
+
+.music-btn.paused {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.15);
+}
+
+.music-btn.paused .music-icon {
+    color: rgba(255, 255, 255, 0.5);
+    animation: none;
+}
+
+@keyframes musicNote {
+    0%, 100% {
+        transform: translateY(0) scale(1);
+    }
+    50% {
+        transform: translateY(-2px) scale(1.05);
+    }
+}
+
+/* 响应式设计 */
 @media (max-width: 768px) {
     .rainbow-text {
         font-size: 3rem;
@@ -718,5 +780,17 @@ body {
     .blessing {
         font-size: 2.5rem;
         letter-spacing: 5px;
+    }
+    
+    .music-btn {
+        width: 45px;
+        height: 45px;
+        bottom: 20px;
+        right: 20px;
+    }
+    
+    .music-icon {
+        width: 20px;
+        height: 20px;
     }
 }
