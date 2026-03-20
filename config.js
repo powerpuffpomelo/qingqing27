@@ -148,6 +148,11 @@ const albumConfig = {
                     filename: "6",
                     date: "2025.11.30",
                     text: "逛沙河大集"
+                },
+                {
+                    filename: "7",
+                    date: "2026.03.19",
+                    text: "清新愉快的造景贴纸初体验"
                 }
             ]
         },

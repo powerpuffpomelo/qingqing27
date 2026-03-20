@@ -507,6 +507,7 @@ body {
 .photo-page {
     flex-direction: column;
     padding: 40px;
+    position: relative;
 }
 
 .photo-page img {
@@ -518,6 +519,8 @@ body {
         0 20px 60px rgba(0, 0, 0, 0.3),
         0 0 0 1px rgba(255, 255, 255, 0.1);
     animation: photoFadeIn 0.8s ease;
+    position: relative;
+    z-index: 10;
 }
 
 @keyframes photoFadeIn {
@@ -536,6 +539,8 @@ body {
     text-align: center;
     color: white;
     animation: captionFadeIn 1s ease 0.3s both;
+    position: relative;
+    z-index: 10;
 }
 
 @keyframes captionFadeIn {
@@ -679,6 +684,153 @@ body {
     0%, 100% { transform: scale(1); }
     10%, 30% { transform: scale(1.1); }
     20%, 40% { transform: scale(1); }
+}
+
+/* 季节性动画效果 */
+/* 春天 - 雨滴 */
+.season-spring {
+    position: relative;
+}
+
+.season-spring::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.raindrop {
+    position: absolute;
+    width: 2px;
+    height: 20px;
+    background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.8));
+    animation: rainFall linear infinite;
+    pointer-events: none;
+    z-index: 1;
+}
+
+@keyframes rainFall {
+    0% {
+        transform: translateY(-20vh);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(120vh);
+        opacity: 0;
+    }
+}
+
+/* 夏天 - 花瓣 */
+.season-summer {
+    position: relative;
+}
+
+.petal {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background-image: url('logo/夏.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    animation: petalFall linear infinite;
+    pointer-events: none;
+    z-index: 1;
+}
+
+@keyframes petalFall {
+    0% {
+        transform: translateY(-20vh) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.9;
+    }
+    90% {
+        opacity: 0.9;
+    }
+    100% {
+        transform: translateY(120vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* 秋天 - 落叶 */
+.season-autumn {
+    position: relative;
+}
+
+.leaf {
+    position: absolute;
+    width: 35px;
+    height: 35px;
+    background-image: url('logo/秋.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    animation: leafFall linear infinite;
+    pointer-events: none;
+    z-index: 1;
+}
+
+@keyframes leafFall {
+    0% {
+        transform: translateY(-20vh) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.9;
+    }
+    50% {
+        transform: translateY(50vh) rotate(180deg) translateX(50px);
+    }
+    90% {
+        opacity: 0.9;
+    }
+    100% {
+        transform: translateY(120vh) rotate(360deg) translateX(-50px);
+        opacity: 0;
+    }
+}
+
+/* 冬天 - 雪花 */
+.season-winter {
+    position: relative;
+}
+
+.snowflake {
+    position: absolute;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 16px;
+    animation: snowFall linear infinite;
+    pointer-events: none;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
+    z-index: 1;
+}
+
+@keyframes snowFall {
+    0% {
+        transform: translateY(-20vh) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(120vh) rotate(360deg);
+        opacity: 0;
+    }
 }
 
 /* 响应式设计 */
